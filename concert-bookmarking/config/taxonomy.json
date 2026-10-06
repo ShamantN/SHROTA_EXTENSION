@@ -1,0 +1,92 @@
+{
+  "traditions": {
+    "hindustani": {
+      "name": "Hindustani Classical",
+      "tags": {
+        "alaap": {
+          "display_name": "Alaap",
+          "color": "#FF6B6B",
+          "description": "Slow, unmetered melodic improvisation exploring the raga",
+          "aliases": ["alap", "alaap", "alapana"]
+        },
+        "jod": {
+          "display_name": "Jod",
+          "color": "#FFA07A",
+          "description": "Pulsed, rhythmic improvisation without formal percussion",
+          "aliases": ["jod", "jor"]
+        },
+        "jhala": {
+          "display_name": "Jhala",
+          "color": "#FFD166",
+          "description": "Fast-tempo rhythmic development featuring repetitive strumming",
+          "aliases": ["jhala", "jala"]
+        },
+        "vilambit_bandish": {
+          "display_name": "Vilambit Bandish",
+          "color": "#06D6A0",
+          "description": "Slow-tempo composition set to a tala cycle",
+          "aliases": ["vilambit_bandish", "vilambit", "bada_khyal", "slow_composition"]
+        },
+        "drut_bandish": {
+          "display_name": "Drut Bandish",
+          "color": "#118AB2",
+          "description": "Fast-tempo composition set to a tala cycle",
+          "aliases": ["drut_bandish", "drut", "chhota_khyal", "fast_composition"]
+        },
+        "taan": {
+          "display_name": "Taan",
+          "color": "#073B4C",
+          "description": "Rapid melodic virtuoso passages",
+          "aliases": ["taan", "tans"]
+        },
+        "sargam": {
+          "display_name": "Sargam",
+          "color": "#8338EC",
+          "description": "Solfege note-singing improvisation",
+          "aliases": ["sargam", "swara"]
+        }
+      }
+    },
+    "carnatic": {
+      "name": "Carnatic Classical",
+      "tags": {
+        "alapana": {
+          "display_name": "Alapana",
+          "color": "#E63946",
+          "description": "Raga exposition without rhythmic accompaniment",
+          "aliases": ["alapana", "raga_alapana"]
+        },
+        "tanam": {
+          "display_name": "Tanam",
+          "color": "#F4A261",
+          "description": "Rhythmic improvisation using syllables like Anantam",
+          "aliases": ["tanam", "thaanam"]
+        },
+        "kriti": {
+          "display_name": "Kriti",
+          "color": "#2A9D8F",
+          "description": "Principal devotional musical composition format",
+          "aliases": ["kriti", "keerthanam", "composition"]
+        },
+        "neraval": {
+          "display_name": "Neraval",
+          "color": "#457B9D",
+          "description": "Improvisation on a chosen lyrical line within tala",
+          "aliases": ["neraval", "niraval"]
+        },
+        "swaraprasthara": {
+          "display_name": "Swaraprasthara",
+          "color": "#7209B7",
+          "description": "Extempore singing of solfa syllables",
+          "aliases": ["swaraprasthara", "kalpanaswara", "kalpana_swaras"]
+        },
+        "tani_avartanam": {
+          "display_name": "Tani Avartanam",
+          "color": "#3A0CA3",
+          "description": "Percussion solo feature (Mridangam / Ghatam / Khanjira)",
+          "aliases": ["tani_avartanam", "thani", "tani", "percussion_solo"]
+        }
+      }
+    }
+  }
+}

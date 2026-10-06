@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Classical Concert Auto-Bookmarker",
+  "version": "1.0.0",
+  "description": "Auto-detects and visually overlays Indian Classical concert movements (Alaap, Jod, Jhala, Bandish) on YouTube scrubber.",
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "dist/background.bundle.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "dist/content.bundle.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

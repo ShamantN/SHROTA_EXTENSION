@@ -1,0 +1,32 @@
+{
+  "channels": [
+    {
+      "handle": "@darbarfestival",
+      "channel_id": "UCsZ1Q3jB8f8N6rM1K4L5qMw",
+      "name": "Darbar Festival",
+      "traditions": ["hindustani", "carnatic"],
+      "verified": true
+    },
+    {
+      "handle": "@firsteditionarts",
+      "channel_id": "UC9E8w7g6d5f4a3b2c1d0eF",
+      "name": "First Edition Arts",
+      "traditions": ["hindustani", "carnatic"],
+      "verified": true
+    },
+    {
+      "handle": "@bhatkhandesangeet",
+      "channel_id": "UC7hG6f5E4d3c2b1A0z9yXw",
+      "name": "Bhatkhande Sangeet",
+      "traditions": ["hindustani"],
+      "verified": true
+    },
+    {
+      "handle": "@madrasmusicauditorium",
+      "channel_id": "UC1a2b3c4d5e6f7g8h9i0jK",
+      "name": "The Music Academy Madras",
+      "traditions": ["carnatic"],
+      "verified": true
+    }
+  ]
+}

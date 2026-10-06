@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mock YouTube Watch Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0f0f0f;
+      color: #fff;
+      font-family: Roboto, Arial, sans-serif;
+    }
+    #player-container {
+      width: 854px;
+      height: 480px;
+      margin: 20px auto;
+      position: relative;
+      background: #000;
+    }
+    #movie_player {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .ytp-chrome-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 48px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    }
+    .ytp-progress-bar-container {
+      position: absolute;
+      bottom: 40px;
+      left: 12px;
+      right: 12px;
+      height: 16px;
+      cursor: pointer;
+    }
+    .ytp-progress-bar {
+      position: relative;
+      width: 100%;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .ytp-play-progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 0%;
+      background: #f00;
+    }
+    .ad-showing .ytp-progress-bar {
+      background: #ffcc00;
+    }
+    #watch-metadata {
+      width: 854px;
+      margin: 0 auto;
+      padding: 10px 0;
+    }
+    #title h1 {
+      font-size: 20px;
+      margin: 8px 0;
+    }
+    #top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #owner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #channel-name a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    #actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #comments-section {
+      width: 854px;
+      margin: 20px auto;
+    }
+    #comment-input, #search-input {
+      background: #121212;
+      border: 1px solid #333;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mock YouTube Search Header -->
+  <div style="padding: 10px 20px; border-bottom: 1px solid #222;">
+    <input type="text" id="search-input" placeholder="Search YouTube" style="width: 300px; margin: 0;">
+  </div>
+
+  <!-- Mock YouTube Video Player -->
+  <div id="player-container">
+    <div id="movie_player" class="html5-video-player">
+      <video id="html5-main-video" tabindex="-1"></video>
+
+      <!-- Video Controls & Scrubber -->
+      <div class="ytp-chrome-bottom">
+        <div class="ytp-progress-bar-container">
+          <div class="ytp-progress-bar" tabindex="0" role="slider" aria-valuenow="0">
+            <div class="ytp-play-progress"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mock Metadata Bar -->
+  <div id="watch-metadata">
+    <div id="title">
+      <h1 class="ytd-watch-metadata">Live Raag Yaman Concert - Pt. Bhimsen Joshi</h1>
+    </div>
+    <div id="top-row">
+      <div id="owner">
+        <div id="channel-name">
+          <a href="/@darbarfestival">@darbarfestival</a>
+        </div>
+      </div>
+      <div id="actions">
+        <button id="like-btn" style="padding: 8px 16px; border-radius: 18px; border: none; background: #272727; color: #fff;">Like</button>
+        <button id="share-btn" style="padding: 8px 16px; border-radius: 18px; border: none; background: #272727; color: #fff;">Share</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mock Comment Input for Hotkey Guard Testing -->
+  <div id="comments-section">
+    <h3>Comments</h3>
+    <textarea id="comment-input" rows="3" placeholder="Add a comment..."></textarea>
+  </div>
+
+  <script>
+    // Mock HTML5 Video Player Media Properties & Simulation Controls
+    const video = document.getElementById("html5-main-video");
+    const moviePlayer = document.getElementById("movie_player");
+    const progressBar = document.querySelector(".ytp-progress-bar");
+    const playProgress = document.querySelector(".ytp-play-progress");
+
+    let currentDuration = 582.0; // 9m 42s default
+    let currentTimeVal = 0.0;
+    let isPlaying = false;
+
+    Object.defineProperty(video, "duration", {
+      get: () => currentDuration,
+      set: (val) => {
+        currentDuration = Number(val);
+        video.dispatchEvent(new Event("durationchange"));
+      },
+      configurable: true
+    });
+
+    Object.defineProperty(video, "currentTime", {
+      get: () => {
+        const attr = video.getAttribute("data-current-time");
+        if (attr !== null) {
+          const parsed = parseFloat(attr);
+          if (!isNaN(parsed)) return parsed;
+        }
+        return currentTimeVal;
+      },
+      set: (val) => {
+        currentTimeVal = Math.max(0, Math.min(Number(val) || 0, currentDuration));
+        video.setAttribute("data-current-time", String(currentTimeVal));
+        if (playProgress) {
+          playProgress.style.width = ((currentTimeVal / currentDuration) * 100) + "%";
+        }
+        video.dispatchEvent(new Event("timeupdate"));
+      },
+      configurable: true
+    });
+
+    video.addEventListener("concert-seek", (e) => {
+      if (e.detail?.time !== undefined) {
+        video.currentTime = Number(e.detail.time);
+      }
+    });
+
+    video.play = async () => { isPlaying = true; return Promise.resolve(); };
+    video.pause = () => { isPlaying = false; };
+
+    // Fire loadedmetadata on initialization
+    setTimeout(() => {
+      video.dispatchEvent(new Event("loadedmetadata"));
+      video.dispatchEvent(new Event("durationchange"));
+    }, 100);
+
+    // Helper functions for automation tests
+    window.setVideoDuration = (sec) => {
+      video.duration = sec;
+    };
+
+    window.toggleAdState = (isAd) => {
+      if (isAd) {
+        moviePlayer.classList.add("ad-showing");
+        const adOverlay = document.createElement("div");
+        adOverlay.className = "ytp-ad-player-overlay";
+        moviePlayer.appendChild(adOverlay);
+      } else {
+        moviePlayer.classList.remove("ad-showing");
+        const adOverlay = moviePlayer.querySelector(".ytp-ad-player-overlay");
+        if (adOverlay) adOverlay.remove();
+      }
+    };
+
+    window.simulateSpaNavigation = (videoId) => {
+      const newUrl = "/watch?v=" + videoId;
+      window.history.pushState({}, "", newUrl);
+      document.dispatchEvent(new CustomEvent("yt-navigate-finish", { detail: { videoId } }));
+    };
+  </script>
+</body>
+</html>

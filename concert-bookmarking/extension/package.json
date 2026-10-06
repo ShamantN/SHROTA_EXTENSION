@@ -1,0 +1,16 @@
+{
+  "name": "concert-bookmarking-extension",
+  "version": "1.0.0",
+  "description": "Chrome Manifest V3 Extension for YouTube Classical Concert Auto-Bookmarking",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/content.js --bundle --outfile=dist/content.bundle.js && esbuild src/background.js --bundle --outfile=dist/background.bundle.js",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0",
+    "jsdom": "^26.0.0",
+    "playwright": "^1.63.0",
+    "vitest": "^3.0.0"
+  }
+}
