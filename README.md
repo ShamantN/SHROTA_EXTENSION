@@ -4,7 +4,7 @@ An automated bookmarking, chaptering, and navigation system for Indian Classical
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
 - **Dynamic Scrubber Overlay:** Paints standardized, color-coded musical movements onto the YouTube progress bar (Hindustani and Carnatic taxonomy).
 - **Interactive Tooltips & Seeking:** Hover over any movement to see timestamps and label; click any segment to jump straight to that movement.
@@ -18,7 +18,7 @@ An automated bookmarking, chaptering, and navigation system for Indian Classical
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```text
 SHROTA/
@@ -44,7 +44,7 @@ SHROTA/
 
 ---
 
-## 🚀 Quick Start & Usage
+## Quick Start & Usage
 
 ### 1. Install Backend Dependencies & Start Server
 ```powershell
@@ -65,7 +65,7 @@ Verify the server is running at [http://127.0.0.1:8000/healthz](http://127.0.0.1
 
 ### 3. Test on YouTube
 Open the pre-seeded classical concert:
-👉 [https://www.youtube.com/watch?v=ed4SIvGjqNI](https://www.youtube.com/watch?v=ed4SIvGjqNI)
+ [https://www.youtube.com/watch?v=ed4SIvGjqNI](https://www.youtube.com/watch?v=ed4SIvGjqNI)
 - The colored movement segments appear on the progress bar.
 - Use `Shift + N` / `Shift + P` to navigate between Alaap, Jod, Vilambit Bandish, and Drut Bandish.
 
@@ -78,7 +78,7 @@ Refresh the YouTube page in Chrome to see the new bookmarks!
 
 ---
 
-## 🧪 Testing
+## Testing
 
 - **Backend & Normalization Tests:**
   ```powershell
